@@ -1,0 +1,123 @@
+<! DOCTYPE html>
+    <html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+        <title>W20220915</title>
+
+        <style type="text/css">
+            body {
+                background-color: rgb(150, 150, 202);
+            }
+
+            .exsample {
+                top: 5%;
+            }
+
+            .exsample1 {
+                top: 28%;
+            }
+
+            .exsample2 {
+                top: 16%;
+            }
+
+
+            .exsample1 {
+                position: relative;
+                left: 30%;
+                top: 50px;
+                width: 30%;
+                height: 140px;
+                background-color: rgba(227, 214, 197, 0.664);
+                padding-top: 5px;
+                padding-left: 10px;
+                padding-bottom: 10px;
+                font-size: x-large;
+                margin-top: 5px;
+                text-align: left;
+            }
+
+            .exsample2 {
+                position: absolute;
+                top: 0;
+                right: 5%;
+                width: 24%;
+                height: 80px;
+                background-color: rgb(138, 212, 212);
+                padding-top: 5px;
+                padding-left: 5px;
+                padding-bottom: 10px;
+                font-size: x-large;
+                margin-top: 15px;
+                text-align: left;
+            }
+
+            label {
+                display: block;
+            }
+        </style>
+
+        <script type="text/javascript">
+
+
+            commits.data.first_name
+
+            async function onClicBtn1() {
+                idinput = document.getElementById("ID").value;
+                name = document.getElementById("name").value;
+
+                let url = 'https://reqres.in/api/users/' + idinput;
+                let response = await fetch(url); //Promise created 
+                let commits = await response.json(); // read response body and parse as JSON 
+                //    alert(commits.data.first_name);
+
+                first_name = commits.data.first_name;
+                if (first_name == name) {
+                    alert('вы вошли в систему.');
+                    document.getElementById("Name").value = commits.data.first_name;
+                    document.getElementById("Sername").value = commits.data.last_name;
+                    document.getElementById("Mail").value = commits.data.email;
+                    document.getElementById("foto").src = commits.data.avatar;
+                }
+                else {
+                    alert('неверные данные, попробуйте снова');
+                    document.getElementById("Name").value = "";
+                    document.getElementById("Sername").value = "";
+                    document.getElementById("Mail").value = "";
+                    document.getElementById("foto").src = "";
+                }
+            }
+        </script>
+
+    </head>
+
+    <body>
+        <span>Name</span>
+        <input type="text" id="name"><br>
+        <span>Id</span>
+        <input type="number" id="ID" min=1 name="Id" value="1"><br>
+        <button id="btn1" onclick="onClicBtn1()">Login</button>
+
+        <form class="exsample1" id="formForOutPut" )>
+            <label> Name </label>
+            <input type="text" id="Name" style="width: 150px;">
+            <label> Sername </label>
+            <input type="text" id="Sername" style="width: 150px;">
+            <label> Mail </label>
+            <input type="text" id="Mail" style="width: 150px;">
+
+            <div class="exsample2">
+                <img src="" id="foto" class="imgsrc" style="width:70px;height: 80px;">
+            </div>
+
+            <div>
+                <input type="submit" id="submitButton" style="display : none;">
+            </div>
+        </form>
+
+    </body>
+
+    </html>
+
